@@ -27,6 +27,7 @@ const Modal = (props) => {
 
   function onSubmit() {
     addTask(newTask);
+    toggleModal();
     // console.log(newTask);
     setNewTask({
       name: "",
@@ -58,7 +59,7 @@ const Modal = (props) => {
                   value={newTask.name}
                 />
               </div>
-              <div class="text-field">
+              <div className="text-field">
                 <label>Description</label>
                 <textarea
                   //   id=""

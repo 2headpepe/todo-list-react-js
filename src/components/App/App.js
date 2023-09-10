@@ -1,8 +1,8 @@
 import "./App.css";
 import Header from "../Header/Header.js";
 import Modal from "../Modal/Modal";
-import React from "react";
-
+import React, { useEffect } from "react";
+import Note from "../Note/Note";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -10,15 +10,24 @@ function App() {
 
   const [taskList, setTaskList] = React.useState([]);
 
+  useEffect(() => {
+    let obj = localStorage.getItem("taskList");
+    if (obj) {
+      let arr = JSON.parse(obj);
+      setTaskList(arr);
+    }
+  }, []);
+
   function toggleModal() {
     setModal((prevModal) => !prevModal);
-    // console.log(modal);
   }
 
   function addTask(newTask) {
-    console.log(newTask);
-    setTaskList((prevTaskList) => [...prevTaskList, newTask]);
-    console.log(taskList);
+    setTaskList((prevTaskList) => {
+      let tmpArray = [...prevTaskList, newTask];
+      localStorage.setItem("taskList", JSON.stringify(tmpArray));
+      return tmpArray;
+    });
   }
 
   return (
@@ -30,7 +39,10 @@ function App() {
         toggleModal={toggleModal}
       ></Modal>
       {taskList.map((e) => (
-        <div>{e.name + " " + e.description}</div>
+        <Note
+          name={e.name}
+          description={e.description}
+        ></Note>
       ))}
     </div>
   );
