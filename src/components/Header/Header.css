@@ -1,7 +1,18 @@
 .Header {
-  height: 200px;
+  /* background-color: #e9eef6; */
+  background-color: #e8e8e8;
+  height: 100%;
   width: 100%;
-  background-color: #e9eef6;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
-  padding-top: 50px;
+  /* border: none; */
+
+  /* z-index: 1; */
+}
+
+.Header .btn {
+  margin-top: 20px;
 }

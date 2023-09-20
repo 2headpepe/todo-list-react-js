@@ -1,16 +1,12 @@
 import React from "react";
 import "./Modal.css";
 const Modal = (props) => {
-  const { toggleModal, addTask } = props;
-
-  const [newTask, setNewTask] = React.useState({
-    name: "",
-    description: "",
-  });
+  const { toggleModal, addTask, newTask, setNewTask } = props;
 
   function handleChange(event) {
-    // console.log(event.target.value);
     const { name, value } = event.target;
+    console.log(name + value);
+
     setNewTask((prevTask) => ({
       ...prevTask,
       [name]: value,
@@ -21,17 +17,22 @@ const Modal = (props) => {
     setNewTask({
       name: "",
       description: "",
+      date: "",
+      group: "",
     });
     toggleModal();
   }
 
   function onSubmit() {
+    const date = new Date();
+    newTask.date = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`;
     addTask(newTask);
     toggleModal();
-    // console.log(newTask);
     setNewTask({
       name: "",
       description: "",
+      date: "",
+      group: "",
     });
   }
 
@@ -57,6 +58,22 @@ const Modal = (props) => {
                   id="taskName"
                   onChange={handleChange}
                   value={newTask.name}
+                />
+              </div>
+              <div class="text-field">
+                <label
+                  className="text-field__label"
+                  htmlFor="groupName"
+                >
+                  Group name
+                </label>
+                <input
+                  className="input form-control"
+                  type="text"
+                  name="group"
+                  id="groupName"
+                  onChange={handleChange}
+                  value={newTask.group}
                 />
               </div>
               <div className="text-field">

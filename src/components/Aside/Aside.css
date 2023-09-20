@@ -1,0 +1,26 @@
+.group-button {
+  height: 50px;
+  width: 232px;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #060d38;
+  /* font-family: Poppins; */
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  line-height: 50px;
+  /* text-align: center; */
+}
+.e {
+  margin-left: 20px;
+}
+.notes-wrapper {
+  height: 100%;
+  background-color: white;
+  z-index: -1;
+}
+.current {
+  background-color: #e8e8e8;
+}
